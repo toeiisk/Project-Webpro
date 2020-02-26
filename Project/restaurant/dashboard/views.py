@@ -4,6 +4,7 @@ from django.contrib.messages.api import success
 from django.shortcuts import redirect, render
 from django.template.context_processors import request
 
+
 # Create your views here.
 def dashboard(request):
     return render (request, 'dashboard/index.html')
