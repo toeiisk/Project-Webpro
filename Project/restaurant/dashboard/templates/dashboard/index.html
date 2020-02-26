@@ -1,8 +1,6 @@
 {% extends "base_nav.html" %}
 {% block content %}
 {% if user.is_authenticated %}
-
-<div class="container">
   <div class="card-deck m-5">
     <div class="card bg-light">
       <div class="card-body text-center">
@@ -52,6 +50,5 @@
         </button>
       </div>
     </div>
-</div>
 {% endif %}
 {% endblock %}
