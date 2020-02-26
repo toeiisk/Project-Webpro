@@ -1,12 +1,16 @@
+from astroid import objects
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.views import auth_logout
 from django.contrib.messages.api import success
 from django.shortcuts import redirect, render
 from django.template.context_processors import request
 
+from home.models import Faculty
+
 
 def index(request):
-    return render(request, 'home/index.html')
+    faculty = Faculty.objects.all()
+    return render(request, 'home/index.html', context={'faculty': faculty})
 
 def auth_login(request):
     context = {}
