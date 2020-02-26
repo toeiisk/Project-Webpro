@@ -1,35 +1,32 @@
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.views import auth_logout
 from django.contrib.messages.api import success
-from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.template.context_processors import request
 
 
 def index(request):
     return render(request, 'home/index.html')
 
-def login(request):
+def auth_login(request):
     context = {}
-    if request.method == "post":
-        username = request.post['username']
-        username = request.post['password']
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
         if user:
             login(request, user)
-            return HttpResponseRedirect(reversed('user_success'))
+            return redirect('index')
         else:
-            context["error"] = "Username or Password Incorrect!!"
+            error = "Username or Password Incorrect!!"
+            context['username'] = username
+            context['password'] = password
+            context['error'] = "Username or Password Incorrect!!"
             return render(request, 'home/login.html', context)
         pass
     else:
         return render(request, 'home/login.html', context)
 
-def success(request):
-    context = {}
-    context['user'] = request.user
-    return render(request, 'home/success.html', context)
-
-def user_logout(request):
-    if request.method == "post":
-        logout(request)
-        return HttpResponseRedirect(reversed('user_login'))
+def auth_logout(request):
+    logout(request)
+    return redirect('login')

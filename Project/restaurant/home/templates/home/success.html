@@ -1,8 +1,0 @@
-{% extends "base_nav_blank.html" %}
-{% block content %}
-    <p>User <b>{{user.username}}</b> is logged in successfully</p>
-    <form method="post" action="/logout/">
-        {% csrf_token %}
-        <input type="submit" value="Logout">
-    </form>
-{% endblock %}
