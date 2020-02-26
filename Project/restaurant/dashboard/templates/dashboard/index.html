@@ -1,58 +1,56 @@
 {% extends "base_nav.html" %} 
-{% block content %} 
-{% if user.is_authenticated %}
-<div class="card-deck m-5">
-  <div class="card bg-light">
-    <div class="card-body text-center">
-      <p class="card-text h4">ร้านป้านกเล็ก</p>
-      <img src="https://picsum.photos/200" alt="" />
-      <button type="button" class="btn btn-secondary float-right m-3">
-        แก้ไขรายละเอียด
-      </button>
-      <button type="button" class="btn btn-danger float-right m-3">
-        ลบข้อมูล
-      </button>
+{% load static %}
+{% block content %}
+  <div class="card-deck m-5">
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="{% static 'restaurant_photo/no1.jpg' %}" alt="Card image cap" />
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </p>
+        <a href="#" class="btn btn-danger float-right">DELETE</a>
+        <a href="{% url 'edit' %}" class="btn btn-secondary float-right mr-2">EDIT</a>
+      </div>
     </div>
-  </div>
 
-  <div class="card bg-light">
-    <div class="card-body text-center">
-      <p class="card-text h4">ร้านป้านกเล็ก</p>
-      <img src="https://picsum.photos/200" alt="" />
-      <button type="button" class="btn btn-secondary float-right m-3">
-        แก้ไขรายละเอียด
-      </button>
-      <button type="button" class="btn btn-danger float-right m-3">
-        ลบข้อมูล
-      </button>
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="{% static 'restaurant_photo/no1.jpg' %}" alt="Card image cap" />
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </p>
+        <a href="#" class="btn btn-danger float-right">DELETE</a>
+        <a href="{% url 'edit' %}" class="btn btn-secondary float-right mr-2">EDIT</a>
+      </div>
     </div>
-  </div>
 
-  <div class="card bg-light">
-    <div class="card-body text-center">
-      <p class="card-text h4">ร้านป้านกเล็ก</p>
-      <img src="https://picsum.photos/200" alt="" />
-      <button type="button" class="btn btn-secondary float-right m-3">
-        แก้ไขรายละเอียด
-      </button>
-      <button type="button" class="btn btn-danger float-right m-3">
-        ลบข้อมูล
-      </button>
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="{% static 'restaurant_photo/no1.jpg' %}" alt="Card image cap" />
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </p>
+        <a href="#" class="btn btn-danger float-right">DELETE</a>
+        <a href="{% url 'edit' %}" class="btn btn-secondary float-right mr-2">EDIT</a>
+      </div>
     </div>
-  </div>
 
-  <div class="card bg-light">
-    <div class="card-body text-center">
-      <p class="card-text h4">ร้านป้านกเล็ก</p>
-      <img src="https://picsum.photos/200" alt="" />
-      <button type="button" class="btn btn-secondary float-right m-3">
-        แก้ไขรายละเอียด
-      </button>
-      <button type="button" class="btn btn-danger float-right m-3">
-        ลบข้อมูล
-      </button>
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="{% static 'restaurant_photo/no1.jpg' %}" alt="Card image cap" />
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </p>
+        <a href="#" class="btn btn-danger float-right">DELETE</a>
+        <a href="{% url 'edit' %}" class="btn btn-secondary float-right mr-2">EDIT</a>
+      </div>
     </div>
-  </div>
-</div>
-{% endif %} 
 {% endblock %}

@@ -1,6 +1,22 @@
-{% extends "base_nav.html" %} 
-{% block content %} 
-{% if user.is_authenticated %}
-
-{% endif %} 
+{% extends "base_nav.html" %}
+{% load static %}
+{% block content %}
+<img src="{% static 'restaurant_photo/no1.jpg' %}" class="img-fluid detail-img mx-auto d-block my-5" alt="Responsive image"/>
+<br />
+<div class="container text-center">
+    <p class="text-center font-weight-bolder h2">ร้านป้านกเล็ก</p>
+    <hr>
+    <p class="font-weight-bolder h5">OPEN-CLOSE</p>
+    <h5>6.00AM - 17.00PM</h5><br>
+    <p class="font-weight-bolder h5">OWNER</p>
+    <h5>ป้านกเล็ก</h5><br>
+    <p class="font-weight-bolder h5">APPROVE-DATE</p>
+    <h5>26/2/2563</h5><br>
+    <p class="font-weight-bolder h5">APPROVE-BY</p>
+    <h5>ADMIN</h5><br>
+    {% if user.is_authenticated %}
+    <a href="#" class="btn btn-danger mb-5">DELETE</a>
+    <a href="{% url 'edit' %}" class="btn btn-secondary mb-5">EDIT</a>
+    {% endif %}
+</div>
 {% endblock %}
