@@ -5,12 +5,13 @@ from django.contrib.messages.api import success
 from django.shortcuts import redirect, render
 from django.template.context_processors import request
 
-from home.models import Faculty
+from .models import Faculty, Restaurant
 
 
 def index(request):
     faculty = Faculty.objects.all()
-    return render(request, 'home/index.html', context={'faculty': faculty})
+    restaurant = Restaurant.objects.all()
+    return render (request, 'home/index.html', context={'faculty': faculty, 'restaurant' : restaurant})
 
 def auth_login(request):
     context = {}
