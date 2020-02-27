@@ -14,4 +14,5 @@ class Restaurant(models.Model):
     close_time = models.TimeField()
     rating = models.IntegerField()
     approve_by = models.CharField(max_length=20)
+    approve_date = models.DateField()
     faculty_id = models.ForeignKey(Faculty, default=None, on_delete=models.CASCADE)
