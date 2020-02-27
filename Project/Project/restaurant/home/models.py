@@ -1,6 +1,4 @@
-
 from django.db import models
-
 
 # Create your models here.
 class Faculty(models.Model):
@@ -15,4 +13,3 @@ class Restaurant(models.Model):
     rating = models.IntegerField()
     approve_by = models.CharField(max_length=20)
     approve_date = models.DateField()
-    faculty_id = models.ForeignKey(Faculty, default=None, on_delete=models.CASCADE)
