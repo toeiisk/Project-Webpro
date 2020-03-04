@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'home',
+    'restaurant_home',
     'details',
     'dashboard',
 ]
@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'restaurant.wsgi.application'
 DATABASES = {
                 'default': {
                     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-                    'NAME': 'postgres',
+                    'NAME': 'Restaurant_kmitl',
                     'USER': 'postgres',
                     'PASSWORD': '1234',
                     'HOST': 'localhost',
@@ -130,6 +130,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/login'

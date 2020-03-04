@@ -1,11 +1,9 @@
 from django.shortcuts import redirect, render
 from django.template.context_processors import request
-from home.models import Faculty
 
 # Create your views here.
 def dashboard(request):
-    faculty = Faculty.objects.all()
-    return render (request, 'dashboard/index.html', context={'faculty': faculty})
+    return render (request, 'dashboard/index.html')
 
 def edit(request):
     return render (request, 'dashboard/edit.html')

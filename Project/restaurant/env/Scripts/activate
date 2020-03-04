@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\tuayk\Documents\GitHub\Project-Webpro\Project\restaurant\env"
+VIRTUAL_ENV="C:\Users\tuayk\Desktop\webpro\restaurant\env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
