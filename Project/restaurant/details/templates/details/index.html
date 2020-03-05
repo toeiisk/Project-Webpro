@@ -18,17 +18,34 @@
                 <th scope="col">รายการอาหาร</th>
                 <th scope="col">ราคา</th>
                 <th scope="col">VEGAN</th>
+                {% if user.is_authenticated %}
+                    <th scope="col">ADMIN</th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
+            {% for list_food in food %}
+            {% for list_restfood in restaurantfood %}
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+                        {% if list_restfood.restaurant_id.id == rest.id %}
+                            <td>{{list_food.name}}</td>
+                            <td>{{list_restfood.price}}</td>
+                            <td>{{list_food.is_vegan}}</td>
+                            <td>
+                                {% if user.is_authenticated %}
+                                    <a href="#" class="btn btn-danger">DELETE</a>
+                                    <a href="#" class="btn btn-secondary">EDIT</a>
+                                {% endif %}
+                            </td>
+                        {% endif %}
             </tr>
+            {% endfor %}
+            {% endfor %}
         </tbody>
     </table>
     {% if user.is_authenticated %}
+    <hr class="m-5">
+    <p class="h4 text-center font-weight-bolder">Delete and Edit this page.</p>
     <a href="#" class="btn btn-danger mb-5">DELETE</a>
     <a href="#" class="btn btn-secondary mb-5">EDIT</a>
     {% endif %}
