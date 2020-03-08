@@ -4,6 +4,6 @@ from dashboard.views import dashboard, edit, add
 
 urlpatterns = [
     path('dashboard/', dashboard, name='dashboard'),
-    path('dashboard/edit', edit, name='edit'),
-    path('dashboard/add', edit, name='add'),
+    path('admin/restaurant_home/restaurant', edit, name='edit'),
+    path('admin/restaurant_home/restaurant/add', edit, name='add'),
 ]
