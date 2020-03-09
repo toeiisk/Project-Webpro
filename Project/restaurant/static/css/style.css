@@ -66,6 +66,16 @@ body {
   transform: scale(1.1);
 }
 
+.card{
+  transition: transform .5s, filter 1.5s ease-in-out;
+}
+
+.card:hover{
+  transform: scale(1.1);
+  opacity: 0.6;
+}
+
+
 .name-rest{
   color: #2c2c2c;
   letter-spacing: 0.05em;
