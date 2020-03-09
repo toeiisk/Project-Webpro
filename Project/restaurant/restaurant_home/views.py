@@ -35,3 +35,10 @@ def auth_login(request):
 def auth_logout(request):
     logout(request)
     return redirect('login')
+
+def rest_search(request):
+    context = {}
+    search = request.GET.get('search', '')
+    context['search'] = search
+    context['restaurant'] = Restaurant.objects.filter(name__icontains=search)
+    return render(request, 'restaurant_home/index.html', context=context)

@@ -1,4 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Mitr&display=swap');
+html, body { 
+  height: 100%; 
+  margin: 0;
+  padding: 0;
+}
+
 *{
   font-family: 'Mitr', sans-serif;
 }
@@ -80,4 +86,8 @@ body {
   color: #2c2c2c;
   letter-spacing: 0.05em;
   text-shadow: 2px 2px 0px #d5d5d5, 5px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+footer{
+ display: block;
 }

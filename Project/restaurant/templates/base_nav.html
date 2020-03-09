@@ -44,9 +44,9 @@
           </li>
         </ul>
 
-        <form class="form-inline my-2 my-lg-0" method="GET" action=".">
-          <input class="form-control mr-sm-2" id="inputName" type="search" placeholder="Restaurant Name.."
-            name="inputName" value="">
+        <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'rest_search' %}">
+          <input class="form-control mr-sm-2" id="search" name="search" type="text" placeholder="Restaurant Name.."
+             value="{{search}}">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
 

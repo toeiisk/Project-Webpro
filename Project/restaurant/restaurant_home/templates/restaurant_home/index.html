@@ -2,6 +2,24 @@
 {% load static %}
 {% block content %}
 <div class="container mb-5">
+  {% if search %}
+  <div class="row ">
+    {% for rest in restaurant %}
+    <div class="col">
+      <div class="card shadow rounded mt-5" style="width: 18rem;">
+        <img class="card-img-top" src="{{ rest.picture.url }}" alt="Card imagecap" />
+        <div class="card-body d-flex flex-column">
+          <p class="card-title text-center h4 font-weight-bolder">{{ rest.name }}</p>
+          <p class="card-title text-center h5 text-muted">{{ rest.faculty_id.name }}</p>
+          <hr>
+          <a href="/details/{{ rest.id }}" class="btn btn-danger mt-auto
+                    float-right">DETAIL</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
   {% for cl in faculty %}
   <p class="h2 mt-5 name-rest">FACULTY OF {{ cl.name }}</p>
   <hr>
@@ -14,12 +32,13 @@
         <p class="card-title text-center h4 font-weight-bolder">{{ rest.name }}</p>
         <hr>
         <a href="/details/{{ rest.id }}" class="btn btn-danger mt-auto
-              float-right">DETAIL</a>
+                  float-right">DETAIL</a>
       </div>
     </div>
     {% endif %}
     {% endfor %}
   </div>
   {% endfor %}
+  {% endif %}
 </div>
 {% endblock %}
