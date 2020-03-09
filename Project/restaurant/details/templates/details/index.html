@@ -45,7 +45,7 @@
             {% endfor %}
         </tbody>
     </table>
-    {% if request.user.is_superuser %}
+    {% if request.user %}
     <hr class="m-5">
     <p class="h4 text-center font-weight-bolder">Delete and Edit this page.</p>
     <a href="{% url 'restaurant_delete' restaurant_id=rest.id %}" onclick="return confirm('Are you sure you want to delete this?')">
