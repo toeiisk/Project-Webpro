@@ -57,7 +57,7 @@ body {
 }
 
 .detail-img{
-  width: 60% !important;
+  width: 50% !important;
   border: solid white 10px !important;
   transition: transform .5s, filter 1.5s ease-in-out;
 }

@@ -25,5 +25,19 @@ def restaurant_delete(request, restaurant_id):
 
 @login_required
 # @permission_required('restaurant.change_restaurantfood')
+def food_add(request):
+    return HttpResponse('Add Food Page.')
+
 def food_list(request):
+    return HttpResponse('List Food Page.')
+
+def food_list_price(request):
+    return HttpResponse('List Food Page.')
+
+def food_price(request):
+    return HttpResponse('List Food Page.')
+
+def food_delete(request, food_id):
+    food = Food.objects.get(id=food_id)
+    food.delete()
     return redirect('index')
