@@ -1,46 +1,27 @@
-{% extends "base_nav.html" %} 
+{% extends "base_nav.html" %}
 {% load static %}
 {% block content %}
 <div class="container">
+  <div class="container text-center">
+    <a href="{% url 'restaurant_add'%}" class="btn btn-success btn-lg btn-block mt-5 font-weight-bolder shadow">ADD RESTAURANT</a>
+  </div>
   {% for cl in faculty %}
   <p class="h3 mt-5">{{ cl.name }}</p>
   <hr>
-  <div class="card-deck m-5">
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="{% static 'restaurant_photo/no1.jpg' %}" alt="Card image cap" />
-      <div class="card-body">
-        <h5 class="card-title">ร้านป้าศรีขายหอย</h5>
-        <a href="#" class="btn btn-danger float-right">DELETE</a>
-        <a href="{% url 'edit' %}" class="btn btn-secondary float-right mr-2">EDIT</a>
+  <div class="card-deck">
+    {% for rest in restaurant %}
+    {% if rest.faculty_id.id == cl.id %}
+    <div class="card shadow rounded" style="width: 18rem;">
+      <img class="card-img-top" src="{{ rest.picture.url }}" alt="Card imagecap" />
+      <div class="card-body text-center">
+        <p class="card-title text-center h4 font-weight-bolder">{{ rest.name }}</p>
+        <hr>
+        <a href="{% url 'restaurant_list' restaurant_id=rest.id %}" class="btn btn-secondary mb-3">EDIT</a>
+        <a href="{% url 'restaurant_delete' restaurant_id=rest.id %}" class="btn btn-danger mb-3" onclick="return confirm('Are you sure you want to delete this?')">DELETE</a>
       </div>
     </div>
-
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="{% static 'restaurant_photo/no1.jpg' %}" alt="Card image cap" />
-      <div class="card-body">
-        <h5 class="card-title">ร้านป้าศรีขายหอย</h5>
-        <a href="#" class="btn btn-danger float-right">DELETE</a>
-        <a href="{% url 'edit' %}" class="btn btn-secondary float-right mr-2">EDIT</a>
-      </div>
-    </div>
-
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="{% static 'restaurant_photo/no1.jpg' %}" alt="Card image cap" />
-      <div class="card-body">
-        <h5 class="card-title">ร้านป้าศรีขายหอย</h5>
-        <a href="#" class="btn btn-danger float-right">DELETE</a>
-        <a href="{% url 'edit' %}" class="btn btn-secondary float-right mr-2">EDIT</a>
-      </div>
-    </div>
-
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="{% static 'restaurant_photo/no1.jpg' %}" alt="Card image cap" />
-      <div class="card-body">
-        <h5 class="card-title">ร้านป้าศรีขายหอย</h5>
-        <a href="#" class="btn btn-danger float-right">DELETE</a>
-        <a href="{% url 'edit' %}" class="btn btn-secondary float-right mr-2">EDIT</a>
-      </div>
-    </div>
+    {% endif %}
+    {% endfor %}
   </div>
   {% endfor %}
 </div>

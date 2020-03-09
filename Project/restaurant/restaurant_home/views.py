@@ -11,17 +11,7 @@ from .models import Faculty, Restaurant
 def index(request):
     faculty = Faculty.objects.all()
     restaurant = Restaurant.objects.all()
-    
     return render (request, 'restaurant_home/index.html', context={'faculty': faculty, 'restaurant' : restaurant})
-
-# def searchName(request):
-#     qs = Restaurant.object.all()
-#     inputName_query = request.GET.get('inputName')
-#     print(inputName_query)
-#     context = {
-#         'queryset' : qs
-#     }
-#     return render(request, 'restaurant_home/login.html', context)
 
 def auth_login(request):
     context = {}

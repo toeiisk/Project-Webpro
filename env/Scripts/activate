@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\tle\Documents\GitHub\Projects\Project-Webpro\env"
+VIRTUAL_ENV="C:\Users\tleleela\Desktop\oop\Project-Webpro\env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

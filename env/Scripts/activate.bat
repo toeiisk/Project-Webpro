@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\tle\Documents\GitHub\Projects\Project-Webpro\env
+set VIRTUAL_ENV=C:\Users\tleleela\Desktop\oop\Project-Webpro\env
 
 if not defined PROMPT set PROMPT=$P$G
 

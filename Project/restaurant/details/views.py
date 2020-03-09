@@ -12,11 +12,13 @@ def details(request, rest_id):
     restaurantfood = RestaurantFood.objects.all()
     return render (request, 'details/index.html', context={'restaurant':restaurant, 'food' : food, 'restaurantfood' : restaurantfood})
 
+@login_required
+@permission_required('restaurant.restaurant_change')
 def restaurant_list(request):
     return HttpResponse('List Restaurant Page.')
 
 @login_required
-@permission_required('details.restaurant_delete')
+@permission_required('restaurant.restaurant_delete')
 def restaurant_delete(request, restaurant_id):
     restaurant = Restaurant.objects.get(id=restaurant_id)
     restaurant.delete()

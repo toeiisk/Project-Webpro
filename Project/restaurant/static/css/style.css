@@ -1,5 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Mitr&display=swap');
+*{
+  font-family: 'Mitr', sans-serif;
+}
+
 body {
   background: #eee !important;
+  font-family: 'Mitr', sans-serif;
 }
 
 .wrapper {
@@ -52,4 +58,16 @@ body {
 
 .detail-img{
   width: 60% !important;
+  border: solid white 10px !important;
+  transition: transform .5s, filter 1.5s ease-in-out;
+}
+
+.detail-img:hover{
+  transform: scale(1.1);
+}
+
+.name-rest{
+  color: #2c2c2c;
+  letter-spacing: 0.05em;
+  text-shadow: 2px 2px 0px #d5d5d5, 5px 5px 0px rgba(0, 0, 0, 0.2);
 }
