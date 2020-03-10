@@ -43,5 +43,6 @@ def rest_search(request):
     context = {}
     search = request.GET.get('search', '')
     context['search'] = search
-    context['restaurant'] = Restaurant.objects.filter(name__icontains=search)
+    context['restaurant'] = {}
+    context['restaurant'].update({search: Restaurant.objects.filter(name__icontains=search)})
     return render(request, 'restaurant_home/index.html', context=context)

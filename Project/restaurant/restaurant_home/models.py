@@ -26,12 +26,14 @@ class Food(models.Model):
     is_vegan = models.BooleanField()
 
     def __str__(self):
-        return self.name
+        return '(%s) %s' %(self.id, self.name)
 
 class RestaurantFood(models.Model):
     price = models.FloatField()
     restaurant_id = models.ForeignKey(Restaurant, on_delete=models.DO_NOTHING)
     food_id = models.ForeignKey(Food, on_delete=models.DO_NOTHING)
+    def __str__(self):
+        return '(%s) %s' %(self.restaurant_id, self.food_id)
 
 class RestaurantRating(models.Model):
     restaurant_id = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
