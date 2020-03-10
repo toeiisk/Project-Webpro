@@ -12,6 +12,8 @@
     <h5>{{ rest.open_time }} - {{ rest.close_time }}</h5><br>
     <p class="font-weight-bolder h5">OWNER</p>
     <h5>{{ rest.owner }}</h5><br>
+    <p class="font-weight-bolder h5">RATING</p>
+    <h5>{{ rest.rating }}</h5><br>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -42,6 +44,25 @@
             {% endfor %}
         </tbody>
     </table>
+
+    <form method="POST" action="{% url 'rating_score' %}">
+        {% csrf_token %}
+        <div class="form-group row my-5">
+            <label for="score" class="h4 mx-2 col">Give Score For Restaurant</label>
+            <select class="form mx-2 col" id="score" name="score">
+                <option name="score" value=1>&#9733;</option>
+                <option name="score" value=2>&#9733;&#9733;</option>
+                <option name="score" value=3>&#9733;&#9733;&#9733;</option>
+                <option name="score" value=4>&#9733;&#9733;&#9733;&#9733;</option>
+                <option name="score" value=5>&#9733;&#9733;&#9733;&#9733;&#9733;</option>
+            </select>
+            <button class="btn btn-success mx-2 col" type="submit">SUBMIT</button>
+            {% for rest in restaurant %}
+                <input type="hidden" value="{{rest.id}}" name="rest_id">
+            {% endfor %}
+        </div>
+    </form>
+
     {% if request.user.is_superuser %}
     <hr class="m-5">
     <p class="h4 text-center font-weight-bolder">Delete and Edit this page.</p>

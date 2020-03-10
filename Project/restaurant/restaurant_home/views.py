@@ -9,9 +9,12 @@ from .models import Faculty, Restaurant
 
 
 def index(request):
-    faculty = Faculty.objects.all()
-    restaurant = Restaurant.objects.all()
-    return render (request, 'restaurant_home/index.html', context={'faculty': faculty, 'restaurant' : restaurant})
+    context = {}
+    context['restaurant'] = {}
+    context['faculty'] = Faculty.objects.all()
+    for cl in context['faculty']:
+        context['restaurant'].update({cl.id : Restaurant.objects.filter(faculty_id_id=cl.id)})
+    return render (request, 'restaurant_home/index.html', context=context)
 
 def auth_login(request):
     context = {}

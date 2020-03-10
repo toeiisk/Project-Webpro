@@ -11,4 +11,5 @@ urlpatterns = [
     path('admin/restaurant_home/food/<int:food_id>/change/', views.food_list, name='food_list'),
     path('admin/restaurant_home/restaurantfood/<int:food_id>/change/', views.food_list_price, name='food_list_price'),
     path('food/delete/<int:food_id>/', views.food_delete, name='food_delete'),
+    path('rating_score/', views.rating_score, name='rating_score'),
 ]
