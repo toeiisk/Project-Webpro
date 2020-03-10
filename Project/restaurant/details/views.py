@@ -1,7 +1,6 @@
 from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import redirect, render
 from django.template.context_processors import request
-
 from restaurant_home.models import *
 
 
@@ -12,35 +11,53 @@ def details(request, rest_id):
     return render (request, 'details/index.html', context={'restaurant':restaurant, 'restaurantfood' : restaurantfood})
 
 @login_required
-@permission_required('restaurant.change_restaurantfood')
 def restaurant_list(request):
-    return HttpResponse('List Restaurant Page.')
-
+    if request.user.is_superuser:
+        return HttpResponse('List Restaurant Page.')
+    else:
+        return redirect('index')
+        
 @login_required
-@permission_required('restaurant.restaurant_delete')
 def restaurant_delete(request, restaurant_id):
-    restaurant = Restaurant.objects.get(id=restaurant_id)
-    restaurant.delete()
-    return redirect('index')
+    if request.user.is_superuser:
+        restaurant = Restaurant.objects.get(id=restaurant_id)
+        restaurant.delete()
+        return redirect('index')
+    else:
+        return redirect('index')
 
 @login_required
-# @permission_required('restaurant.change_restaurantfood')
 def food_add(request):
-    return HttpResponse('Add Food Page.')
+    if request.user.is_superuser:
+        return HttpResponse('Add Food Page.')
+    else:
+        return redirect('index')
 
 def food_list(request):
-    return HttpResponse('List Food Page.')
+    if request.user.is_superuser:
+        return HttpResponse('List Food Page.')
+    else:
+        return redirect('index')
 
 def food_list_price(request):
-    return HttpResponse('List Food Page.')
+    if request.user.is_superuser:
+        return HttpResponse('List Food Page.')
+    else:
+        return redirect('index')
 
 def food_price(request):
-    return HttpResponse('List Food Page.')
+    if request.user.is_superuser:
+        return HttpResponse('List Food Page.')
+    else:
+        return redirect('index')
 
 def food_delete(request, food_id):
-    food = Food.objects.get(id=food_id)
-    food.delete()
-    return redirect('index')
+    if request.user.is_superuser:
+        food = Food.objects.get(id=food_id)
+        food.delete()
+        return redirect('index')
+    else:
+        return redirect('index')
 
 def rating_score(request):
     context = {}

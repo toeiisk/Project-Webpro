@@ -21,3 +21,5 @@ def dashboard(request):
 def restaurant_add(request):
     if request.user.is_superuser:
         return HttpResponse('Add Restaurant Page.')
+    else:
+        return redirect('login')
