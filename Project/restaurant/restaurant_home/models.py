@@ -30,8 +30,8 @@ class Food(models.Model):
 
 class RestaurantFood(models.Model):
     price = models.FloatField()
-    restaurant_id = models.ForeignKey(Restaurant, on_delete=models.DO_NOTHING)
-    food_id = models.ForeignKey(Food, on_delete=models.DO_NOTHING)
+    restaurant_id = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
+    food_id = models.ForeignKey(Food, on_delete=models.CASCADE)
     def __str__(self):
         return '(%s) %s' %(self.restaurant_id, self.food_id)
 
