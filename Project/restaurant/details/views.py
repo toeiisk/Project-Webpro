@@ -12,7 +12,7 @@ def details(request, rest_id):
 
 #function Change รายละเอียดของ Restaurant
 @login_required
-@permission_required('details.change_restaurant')
+@permission_required('restaurant_home.change_restaurant')
 def restaurant_list(request):
     if request.user.is_superuser:
         return HttpResponse('List Restaurant Page.')
@@ -21,7 +21,7 @@ def restaurant_list(request):
 
 #function Delete รายละเอียดของ Restaurant 
 @login_required
-@permission_required('details.delete_restaurant')
+@permission_required('restaurant_home.delete_restaurant')
 def restaurant_delete(request, restaurant_id):
     if request.user.is_superuser:
         restaurant = Restaurant.objects.get(id=restaurant_id)
@@ -32,7 +32,7 @@ def restaurant_delete(request, restaurant_id):
 
 #function Add รายละเอียดของ Food
 @login_required
-@permission_required('details.add_food')
+@permission_required('restaurant_home.add_food')
 def food_add(request):
     if request.user.is_superuser:
         return HttpResponse('Add Food Page.')
@@ -41,7 +41,7 @@ def food_add(request):
 
 #function Change รายละเอียดของ Food
 @login_required
-@permission_required('details.change_food')
+@permission_required('restaurant_home.change_food')
 def food_list(request):
     if request.user.is_superuser:
         return HttpResponse('List Food Page.')
@@ -50,7 +50,7 @@ def food_list(request):
 
 #function Delete รายละเอียดของ Food
 @login_required
-@permission_required('details.delete_food')
+@permission_required('restaurant_home.delete_food')
 def food_delete(request, food_id):
     if request.user.is_superuser:
         food = Food.objects.get(id=food_id)

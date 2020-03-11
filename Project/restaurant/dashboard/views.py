@@ -17,7 +17,7 @@ def dashboard(request):
 
 #เป็น function add restaurant 
 @login_required
-@permission_required('dashboard.add_restaurant')
+@permission_required('restaurant_home.add_restaurant')
 def restaurant_add(request):
     if request.user.is_superuser:
         return HttpResponse('Add Restaurant Page.')
