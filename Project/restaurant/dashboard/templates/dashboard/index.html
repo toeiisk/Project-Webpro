@@ -5,8 +5,7 @@
   <div class="container text-center">
     <a href="{% url 'restaurant_add'%}" class="btn btn-success btn-lg btn-block mt-5 font-weight-bolder shadow">ADD
       RESTAURANT</a>
-    <a href="#" onclick="window.open('{% url 'food_price' %}'); window.open('{% url 'food_add' %}');"
-      class="btn btn-warning btn-lg btn-block font-weight-bolder shadow">ADD FOOD</a>
+    <a href="{% url 'food_add' %}" class="btn btn-warning btn-lg btn-block font-weight-bolder shadow">ADD FOOD</a>
   </div>
   {% for cl in faculty %}
   <p class="h2 mt-5 font-weight-bolder">FACULTY OF {{ cl.name }}</p>

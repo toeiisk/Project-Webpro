@@ -19,7 +19,7 @@ class Restaurant(models.Model):
     faculty_id = models.ForeignKey(Faculty, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name
+        return '(%s) %s' %(self.id, self.name)
 
 class Food(models.Model):
     name = models.CharField(max_length=50)
@@ -46,3 +46,5 @@ class RestaurantRating(models.Model):
     )
     rating = models.IntegerField(choices=rate, default=1)
 
+    def __str__(self):
+        return '(%s)' %(self.restaurant_id)
