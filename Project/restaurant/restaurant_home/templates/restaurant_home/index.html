@@ -2,19 +2,19 @@
 {% load static %}
 {% block content %}
 <div class="container mb-5">
-  {% if search %}
-  <div class="row ">
+  {% if search%}
+  <div class="row">
     {% for rest_type, rest in restaurant.items %}
       {% for r in rest %}
       <div class="col-sm-3">
-        <div class="card shadow rounded mt-5" style="width: 18rem;">
+        <div class="card shadow rounded mt-5 border border-dark" style="width: 18rem;">
           <img class="card-img-top" src="{{ r.picture.url }}" alt="Card imagecap" />
           <div class="card-body d-flex flex-column">
-            <p class="card-title text-center h4 font-weight-bolder">{{ r.name }}</p>
+            <p class="card-title text-center h4 font-weight-bold">{{ r.name }}</p>
             <p class="card-title text-center h5 text-muted">{{ r.faculty_id.name }}</p>
             <hr>
-            <a href="/details/{{ r.id }}" class="btn btn-danger mt-auto
-                        float-right">DETAIL</a>
+            <a href="/details/{{ r.id }}" class="btn btn-outline-info mt-auto
+                          float-right">DETAIL</a>
           </div>
         </div>
       </div>
@@ -22,61 +22,50 @@
     {% endfor %}
   </div>
   {% else %}
-    {% for cl in faculty %}
-      <p class="h2 mt-5">FACULTY OF {{ cl.name }}
-        <a class="btn btn-primary h5 float-right mr-5" data-toggle="collapse" 
-        href="#{{cl}}" role="button" aria-expanded="false" aria-controls="collapseExample">See more</a>
-        <!-- <a class="btn btn-primary h5 float-right mr-5" href="{% url 'seemore' cl.id %}">See more</a> -->
-      </p>
-      <div class="card-deck mt-3">
-        {% for rest_type, rest in restaurant.items %}
-          {% if rest_type == cl.id %}
-            <!-- {% if not seemore %} -->
-              {% for r in rest|slice:":4" %}
-                <div class="card shadow rounded" style="width: 18rem;">
-                  <img class="card-img-top" src="{{ r.picture.url }}" alt="Card imagecap" />
-                  <div class="card-body d-flex flex-column">
-                    <p class="card-title text-center h4 font-weight-bolder">{{ r.name }}</p>
-                    <hr>
-                    <a href="/details/{{ r.id }}" class="btn btn-danger mt-auto float-right">DETAIL</a>
-                  </div>
-                </div>
-              {% endfor %}
-            <!-- {% else %} -->
-              <!-- {% for r in rest %}
-                <div class="card shadow rounded" style="width: 18rem;">
-                  <img class="card-img-top" src="{{ r.picture.url }}" alt="Card imagecap" />
-                  <div class="card-body d-flex flex-column">
-                    <p class="card-title text-center h4 font-weight-bolder">{{ r.name }}</p>
-                    <hr>
-                    <a href="/details/{{ r.id }}" class="btn btn-danger mt-auto float-right">DETAIL</a>
-                  </div>
-                </div>
-              {% endfor %} -->
-            <!-- {% endif %} -->
-          {% endif %}
-        {% endfor %}
-      </div>
-
-      <div class="collapse" id="{{cl}}">
-        <div class="card-deck mt-3">
-          {% for rest_type, rest in restaurant.items %}
-            {% if rest_type == cl.id %}
-              {% for r in rest|slice:"4:" %}
-              <div class="card shadow rounded" style="width: 18rem;">
-                <img class="card-img-top" src="{{ r.picture.url }}" alt="Card imagecap" />
-                <div class="card-body d-flex flex-column">
-                  <p class="card-title text-center h4 font-weight-bolder">{{ r.name }}</p>
-                  <hr>
-                  <a href="/details/{{ r.id }}" class="btn btn-danger mt-auto float-right">DETAIL</a>
-                </div>
-              </div>
-              {% endfor %}
-            {% endif %}
+  
+  {% for cl in faculty %}
+    <p class="h2 mt-5 font-weight-bolder"><ins>FACULTY OF {{ cl.name }}</ins>
+      <a class="btn btn-outline-secondary h5 float-right mr-5" data-toggle="collapse" href="#{{cl}}" role="button"
+        aria-expanded="false" aria-controls="collapseExample">See more</a>
+    </p>
+    <div class="card-deck mt-4">
+      {% for rest_type, rest in restaurant.items %}
+        {% if rest_type == cl.id %}
+          {% for r in rest|slice:":4" %}
+          <div class="card shadow rounded border border-dark" style="width: 18rem;">
+            <img class="card-img-top" src="{{ r.picture.url }}" alt="Card imagecap" />
+            <div class="card-body d-flex flex-column">
+              <p class="card-title text-center h4 font-weight-bold">{{ r.name }}</p>
+              <hr>
+              <a href="/details/{{ r.id }}" class="btn btn-outline-info mt-auto float-right">DETAIL</a>
+            </div>
+          </div>
           {% endfor %}
-        </div>
-      </div>
-    {% endfor %}
+        {% endif %}
+      {% endfor %}
+  </div>
+
+  <div class="collapse" id="{{cl}}">
+    <div class="row">
+      {% for rest_type, rest in restaurant.items %}
+        {% if rest_type == cl.id %}
+          {% for r in rest|slice:"4:" %}
+          <div class="col-sm-3 mt-4">
+            <div class="card shadow rounded border border-dark" style="width: 18rem;">
+              <img class="card-img-top" src="{{ r.picture.url }}" alt="Card imagecap" />
+              <div class="card-body d-flex flex-column">
+                <p class="card-title text-center h4 font-weight-bold">{{ r.name }}</p>
+                <hr>
+                <a href="/details/{{ r.id }}" class="btn btn-outline-info mt-auto float-right">DETAIL</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
   {% endif %}
 </div>
 {% endblock %}

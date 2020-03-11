@@ -1,7 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.views import auth_logout
 from django.contrib.messages.api import success
-from django.db.models import Q
 from django.shortcuts import redirect, render
 from django.template.context_processors import request
 
@@ -15,15 +14,6 @@ def index(request):
     for cl in context['faculty']:
         context['restaurant'].update({cl.id : Restaurant.objects.filter(faculty_id_id=cl.id)})
     context['seemore'] = False
-    return render (request, 'restaurant_home/index.html', context=context)
-
-def rest_seemore(request, faculty_id): # ร้านอาหารที่ 5 ขึ้นบรรทัดใหม่
-    context = {}
-    context['restaurant'] = {}
-    context['faculty'] = Faculty.objects.filter(id=faculty_id)
-    context['seemore'] = True
-    for cl in context['faculty']:
-        context['restaurant'].update({cl.id : Restaurant.objects.filter(faculty_id_id=cl.id)})
     return render (request, 'restaurant_home/index.html', context=context)
 
 def auth_login(request):

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Mitr&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Sarabun&display=swap');
 html, body { 
   height: 100%; 
   margin: 0;
@@ -6,12 +6,12 @@ html, body {
 }
 
 *{
-  font-family: 'Mitr', sans-serif;
+  font-family: 'Sarabun', sans-serif;
 }
 
 body {
-  background: #eee !important;
-  font-family: 'Mitr', sans-serif;
+  background: #eee;
+  font-family: 'Sarabun', sans-serif;
 }
 
 .wrapper {
@@ -63,23 +63,56 @@ body {
 
 .detail-img{
   width: 50% !important;
-  border: solid white 10px !important;
+  border: solid rgb(231, 231, 231) 10px !important;
   transition: transform .5s, filter 1.5s ease-in-out;
+}
+
+#bg {
+  position: fixed; 
+  top: -50%; 
+  left: -50%; 
+  width: 200%; 
+  height: 200%;
+  z-index: -1;
+}
+#bg img {
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  margin: auto; 
+  min-width: 50%;
+  min-height: 50%;
+  z-index: -1;
+  opacity: 0.5;
 }
 
 .detail-img:hover{
   transform: scale(1.1);
 }
 
-.card{
-  transition: transform .5s, filter 1.5s ease-in-out;
+.card:hover {
+  opacity: 1;
+  -webkit-animation: flash 1.5s;
+  animation: flash 1.5s;
 }
-
-.card:hover{
-  transform: scale(1.1);
-  opacity: 0.6;
+@-webkit-keyframes flash {
+  0% {
+      opacity: .4;
+  }
+  100% {
+      opacity: 1;
+  }
 }
-
+@keyframes flash {
+  0% {
+      opacity: .4;
+  }
+  100% {
+      opacity: 1;
+  }
+}
 
 .name-rest{
   color: #2c2c2c;
@@ -88,7 +121,11 @@ body {
 }
 
 footer{
- display: block;
+  position: absolute;
+  right: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
 }
 
 .row {
@@ -98,4 +135,24 @@ footer{
 
 .row > div[class*='col-'] {
  display: flex;
+}
+
+#container {
+	background-color: #FFF;
+	margin: 80px 10%;
+	padding: 30px 60px;
+	border-radius: 20px;
+	box-shadow: 0 3px 26px 0 rgba(0,0,0,0.20);
+}
+
+main,header {
+	box-sizing: border-box;
+}
+
+main {
+	background-color: #f7f7f7;
+	padding: 20px;
+	border-radius: 10px;
+	color: #6b6b6b;
+	margin: 40px 0;
 }
