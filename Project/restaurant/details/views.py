@@ -71,7 +71,7 @@ def rating_score(request):
         for rt in all_rating:
             rates += rt.rating
         rates /= all_rating.count()
-        print(rates)
+        print('%.2f' %(rates))
         current_restaurant = Restaurant.objects.get(id=rest_id)
         current_restaurant.rating = rates
         current_restaurant.save()
