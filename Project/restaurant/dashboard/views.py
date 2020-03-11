@@ -1,8 +1,6 @@
 from django.contrib.auth.decorators import login_required
-from django.http import Http404
 from django.shortcuts import redirect, render
 from django.template.context_processors import request
-
 from details.views import *
 from restaurant_home.views import *
 
@@ -18,6 +16,7 @@ def dashboard(request):
         return redirect('login')
 
 @login_required
+@permission_required('dashboard.add_restaurant')
 def restaurant_add(request):
     if request.user.is_superuser:
         return HttpResponse('Add Restaurant Page.')

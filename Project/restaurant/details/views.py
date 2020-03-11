@@ -11,6 +11,7 @@ def details(request, rest_id):
     return render (request, 'details/index.html', context={'restaurant':restaurant, 'restaurantfood' : restaurantfood})
 
 @login_required
+@permission_required('details.change_restaurant')
 def restaurant_list(request):
     if request.user.is_superuser:
         return HttpResponse('List Restaurant Page.')
@@ -18,6 +19,7 @@ def restaurant_list(request):
         return redirect('index')
         
 @login_required
+@permission_required('details.delete_restaurant')
 def restaurant_delete(request, restaurant_id):
     if request.user.is_superuser:
         restaurant = Restaurant.objects.get(id=restaurant_id)
@@ -27,30 +29,23 @@ def restaurant_delete(request, restaurant_id):
         return redirect('index')
 
 @login_required
+@permission_required('details.add_food')
 def food_add(request):
     if request.user.is_superuser:
         return HttpResponse('Add Food Page.')
     else:
         return redirect('index')
 
+@login_required
+@permission_required('details.change_food')
 def food_list(request):
     if request.user.is_superuser:
         return HttpResponse('List Food Page.')
     else:
         return redirect('index')
 
-def food_list_price(request):
-    if request.user.is_superuser:
-        return HttpResponse('List Food Page.')
-    else:
-        return redirect('index')
-
-def food_price(request):
-    if request.user.is_superuser:
-        return HttpResponse('List Food Page.')
-    else:
-        return redirect('index')
-
+@login_required
+@permission_required('details.delete_food')
 def food_delete(request, food_id):
     if request.user.is_superuser:
         food = Food.objects.get(id=food_id)
