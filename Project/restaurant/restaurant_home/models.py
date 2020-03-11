@@ -37,14 +37,7 @@ class RestaurantFood(models.Model):
 
 class RestaurantRating(models.Model):
     restaurant_id = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
-    rate = (
-        (1, '1'),
-        (2, '2'),
-        (3, '3'),
-        (4, '4'),
-        (5, '5'),
-    )
-    rating = models.IntegerField(choices=rate, default=1)
+    rating = models.IntegerField()
 
     def __str__(self):
         return '(%s)' %(self.restaurant_id)

@@ -11,9 +11,9 @@ def index(request):
     context = {}
     context['restaurant'] = {}
     context['faculty'] = Faculty.objects.all()
-    for cl in context['faculty']:
+    for cl in context['faculty']: #วนค่าทั้งหมดใน Faculty มีคณะไรบ้าง
         context['restaurant'].update({cl.id : Restaurant.objects.filter(faculty_id_id=cl.id)})
-    context['seemore'] = False
+        #เอา pk ของ faculty มาเทียบกับ cl.id ถ้าตรงกันก็เพิ่มร้านอาหารในคณะนั้น 
     return render (request, 'restaurant_home/index.html', context=context)
 
 def auth_login(request):
@@ -41,8 +41,9 @@ def auth_logout(request):
 
 def rest_search(request):
     context = {}
-    search = request.GET.get('search', '')
-    context['search'] = search
+    search = request.GET.get('search', '') # get ค่าที่มาจาก search
+    context['search'] = search #กำหนดค่าให้
     context['restaurant'] = {}
     context['restaurant'].update({search: Restaurant.objects.filter(name__icontains=search)})
+    #เอาค่า search มาเทียบกับ name ของ Restaurnt เพื่อนำมาแสดง
     return render(request, 'restaurant_home/index.html', context=context)
